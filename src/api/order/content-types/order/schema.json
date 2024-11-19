@@ -18,24 +18,24 @@
     "receiverName": {
       "type": "string"
     },
-    "itemDetails": {
-      "type": "string"
-    },
     "deliveryInstructions": {
-      "type": "string"
+      "type": "text"
+    },
+    "itemDetails": {
+      "type": "text"
     },
     "shipment": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::shipment.shipment"
     },
-    "creator": {
+    "driver": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "admin::user"
+      "target": "api::driver.driver"
     },
-    "orderStatus": {
-      "type": "string"
+    "orderId": {
+      "type": "integer"
     }
   }
 }

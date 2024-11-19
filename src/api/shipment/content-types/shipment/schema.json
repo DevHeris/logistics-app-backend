@@ -17,24 +17,27 @@
       "relation": "oneToOne",
       "target": "api::order.order"
     },
-    "Status": {
+    "shipmentStatus": {
       "type": "enumeration",
       "enum": [
-        "Pending",
-        "In Transit",
-        "Delivered"
+        "pending",
+        "in_transit",
+        "completed"
       ]
     },
-    "Driver": {
+    "longitude": {
+      "type": "decimal"
+    },
+    "latitude": {
+      "type": "decimal"
+    },
+    "driver": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "plugin::users-permissions.user"
+      "target": "api::driver.driver"
     },
-    "lat": {
-      "type": "decimal"
-    },
-    "lon": {
-      "type": "decimal"
+    "shipmentId": {
+      "type": "integer"
     }
   }
 }
