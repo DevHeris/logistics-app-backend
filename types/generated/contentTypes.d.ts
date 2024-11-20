@@ -362,143 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiDriverDriver extends Schema.CollectionType {
-  collectionName: 'drivers';
-  info: {
-    singularName: 'driver';
-    pluralName: 'drivers';
-    displayName: 'Driver';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    shipment: Attribute.Relation<
-      'api::driver.driver',
-      'oneToOne',
-      'api::shipment.shipment'
-    >;
-    order: Attribute.Relation<
-      'api::driver.driver',
-      'oneToOne',
-      'api::order.order'
-    >;
-    user: Attribute.Relation<
-      'api::driver.driver',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
-    driverId: Attribute.Integer;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::driver.driver',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::driver.driver',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiOrderOrder extends Schema.CollectionType {
-  collectionName: 'orders';
-  info: {
-    singularName: 'order';
-    pluralName: 'orders';
-    displayName: 'Order';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    senderName: Attribute.String;
-    receiverName: Attribute.String;
-    deliveryInstructions: Attribute.Text;
-    itemDetails: Attribute.Text;
-    shipment: Attribute.Relation<
-      'api::order.order',
-      'oneToOne',
-      'api::shipment.shipment'
-    >;
-    driver: Attribute.Relation<
-      'api::order.order',
-      'oneToOne',
-      'api::driver.driver'
-    >;
-    orderId: Attribute.Integer;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::order.order',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::order.order',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiShipmentShipment extends Schema.CollectionType {
-  collectionName: 'shipments';
-  info: {
-    singularName: 'shipment';
-    pluralName: 'shipments';
-    displayName: 'Shipment';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    order: Attribute.Relation<
-      'api::shipment.shipment',
-      'oneToOne',
-      'api::order.order'
-    >;
-    shipmentStatus: Attribute.Enumeration<
-      ['pending', 'in_transit', 'completed']
-    >;
-    longitude: Attribute.Decimal;
-    latitude: Attribute.Decimal;
-    driver: Attribute.Relation<
-      'api::shipment.shipment',
-      'oneToOne',
-      'api::driver.driver'
-    >;
-    shipmentId: Attribute.Integer;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::shipment.shipment',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::shipment.shipment',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -940,6 +803,143 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiDriverDriver extends Schema.CollectionType {
+  collectionName: 'drivers';
+  info: {
+    singularName: 'driver';
+    pluralName: 'drivers';
+    displayName: 'Driver';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    shipment: Attribute.Relation<
+      'api::driver.driver',
+      'oneToOne',
+      'api::shipment.shipment'
+    >;
+    order: Attribute.Relation<
+      'api::driver.driver',
+      'oneToOne',
+      'api::order.order'
+    >;
+    user: Attribute.Relation<
+      'api::driver.driver',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    driverId: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::driver.driver',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::driver.driver',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiOrderOrder extends Schema.CollectionType {
+  collectionName: 'orders';
+  info: {
+    singularName: 'order';
+    pluralName: 'orders';
+    displayName: 'Order';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    senderName: Attribute.String;
+    receiverName: Attribute.String;
+    deliveryInstructions: Attribute.Text;
+    itemDetails: Attribute.Text;
+    shipment: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'api::shipment.shipment'
+    >;
+    driver: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'api::driver.driver'
+    >;
+    orderId: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::order.order',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiShipmentShipment extends Schema.CollectionType {
+  collectionName: 'shipments';
+  info: {
+    singularName: 'shipment';
+    pluralName: 'shipments';
+    displayName: 'Shipment';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    order: Attribute.Relation<
+      'api::shipment.shipment',
+      'oneToOne',
+      'api::order.order'
+    >;
+    shipmentStatus: Attribute.Enumeration<
+      ['pending', 'in_transit', 'completed']
+    >;
+    longitude: Attribute.Decimal;
+    latitude: Attribute.Decimal;
+    driver: Attribute.Relation<
+      'api::shipment.shipment',
+      'oneToOne',
+      'api::driver.driver'
+    >;
+    shipmentId: Attribute.Integer;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::shipment.shipment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::shipment.shipment',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -950,9 +950,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::driver.driver': ApiDriverDriver;
-      'api::order.order': ApiOrderOrder;
-      'api::shipment.shipment': ApiShipmentShipment;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -961,6 +958,9 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::driver.driver': ApiDriverDriver;
+      'api::order.order': ApiOrderOrder;
+      'api::shipment.shipment': ApiShipmentShipment;
     }
   }
 }
